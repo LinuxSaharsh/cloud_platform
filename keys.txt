@@ -1,0 +1,2 @@
+default passwords : Kalujoshi@0934
+default user names : kalu

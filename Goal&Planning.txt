@@ -1,0 +1,350 @@
+i want to make cloud platform which has  2 services one is computing and second is storage.
+
+1> signup page take information 
+1.Page one Username, phone number and Email with botton next after fill all information (email is not attach to any other account) and information must cheak on server side and option "I have account, SignIN".
+2. Page two check OTP which may recive on user phone or Email (according to user requist).
+3. Page third take user address, city, state, and country and pan card.
+4. Page forth is for review and button.
+5. Apply multi-factor authentication (MFA)  option “apply” and skip for now.
+
+2>SignIN page
+1. Your Sign-In page should allow two types of users to log in:
+
+-Root User
+
+-IAM-like Account (Alias or ID)
+
+You also want it to mirror something like AWS where the user chooses their login type.
+
+* Sign-In Page (UI Elements)
+Page Title: Sign In to Your Cloud Platform
+Login Type Selection:
+
+Radio Buttons or Tabs:(default choose :as last time)
+
+Sign in as Root User(default if first time)
+
+Sign in with Account ID or Alias
+
+✳️ If 'Sign in as Root User' selected:
+Form Fields:
+
+📧 Email Address
+Input type: email
+
+✅ Captcha (reCAPTCHA or custom bot check)
+
+Next botton
+
+🔒 Password
+Input type: password
+
+next botton
+
+
+** multi-factor authentication (MFA) > if apply else ask for multi-factor authentication (MFA) option done and skip.
+
+🔘 Submit Button: Sign In
+
+Additional Options:
+
+🔁 Forgot Password?
+
+🔗 Create a New Account
+
+⬅️ Back to Home
+
+🟦 If 'Sign in with Account ID or Alias' selected:
+Form Fields:
+
+🧾 Account ID or Alias
+Input type: text
+
+👤 Username
+Input type: text
+
+🔒 Password
+Input type: password
+
+✅ Captcha or reCAPTCHA
+
+🔘 Submit Button: Sign In
+
+Extra:
+
+🔁 Forgot Username / Password?
+
+🔗 Create a New Account
+
+⬅️ Back to Home
+
+🔒 Backend Logic for Sign In
+
+Hash password comparison (e.g., using bcrypt)
+
+Validate user exists
+
+Differentiate roles: root_user, normal_user
+
+Create a session/token (JWT preferred)
+
+Log sign-in activity (IP, time, etc.)
+
+3> Console 
+
+After successful login, the user is redirected to the **Console**, which shows available cloud services. The two main services offered are:
+-----------------------------------------
+1. Computing Service
+2. Storage Service
+3.Domain (URL) Buying Service
+4.Billing
+-----------------------------------------
+
+### **1. Computing Service**
+
+#### 🔹 Purpose:
+
+To allow users to **create, manage, and monitor virtual machines (VMs)** to run applications, websites, development environments, etc.
+
+#### 🔹 Features:
+
+* `Create Machine` button to start a virtual machine.
+* Select OS image (Ubuntu, Windows, CentOS, etc.).
+* Select CPU, RAM, and storage size.
+* Choose region or data center.
+* Start, Stop, Restart, or Terminate Machine.
+* Monitor usage: CPU %, Memory, Network I/O.
+* View instance logs and health status.
+
+#### 🔹 Types of Instances:
+
+* **General Purpose**: Balanced CPU and memory.
+* **Compute Optimized**: High CPU performance (for backend processing).
+* **Memory Optimized**: High RAM (for analytics or large datasets).
+* **Custom (User-defined)**: Allow user to configure own specs.
+
+#### 🔹 Additional Options:
+
+* **Attach volumes** (from Storage Service).
+* Assign **Elastic IP** (static public IP).
+* Configure **Security Groups** (firewall rules).
+* Set **Auto-shutdown timers** to save cost.
+* Connect via **SSH** or **Web-based terminal**.
+
+---
+
+### **2. Storage Service**
+
+#### 🔹 Purpose:
+
+To provide users with a secure and scalable place to **store, access, and manage files, backups, images**, and other digital content.
+
+#### 🔹 Features:
+
+* `Create Bucket` to make a new storage container.
+* Upload and download files of any type.
+* Organize files in folders (logical structure).
+* Preview images, PDFs, and videos directly.
+* Delete, rename, or move files.
+* Track storage usage and quota.
+
+#### 🔹 Types of Storage:
+
+* **Object Storage** (like AWS S3):
+
+  * Stores unstructured data (files, backups, images).
+  * Access via unique object URLs.
+* **Block Storage**:
+
+  * Attach to virtual machines (like hard drives).
+* **Archive Storage**:
+
+  * For rarely accessed data (cost-effective long-term storage).
+* *(Optional)* **File Storage**:
+
+  * Shared file systems (like NFS or SMB).
+
+#### 🔹 Additional Options:
+
+* **Bucket Access Control**: Public or Private.
+* **Enable Versioning**: Save file history.
+* **Share Files**: Generate public URLs or signed URLs.
+* **Set Expiry**: Auto-delete files after certain time.
+* **Storage Class Selection**:
+
+  * Standard (frequent use)
+  * Infrequent Access
+  * Archive (cold storage)
+
+#### 🔹 Security & Compliance:
+
+* Encrypt files at rest and in transit.
+* Apply access policies per file or bucket.
+* MFA required for deleting critical buckets (if enabled).
+* View access logs and audit trails.
+
+---
+
+### 🧭 **Console Navigation UI Suggestions:**
+
+* **Sidebar Menu**:
+
+  * Dashboard
+  * Computing
+  * Storage
+  * Billing
+  * Settings
+  * Logout
+
+* **Dashboard Widgets**:
+
+  * Active Instances
+  * Total Storage Used
+  * Recent Activity
+  * Security Alerts
+
+---
+
+### 📝 Summary Table(for user not ai)
+
+| Service       | Purpose                             | Types                            | Key Features                                |
+| ------------- | ----------------------------------- | -------------------------------- | ------------------------------------------- |
+| **Computing** | Launch & manage virtual machines    | General, Compute, Memory, Custom | Start/stop VMs, monitor usage, SSH, volumes |
+| **Storage**   | Store files, backups, and documents | Object, Block, Archive           | Buckets, file upload, sharing, encryption   |
+
+
+4> Domain (URL) Buying Service
+🔹 Purpose:
+
+Allow users to search, register, and manage domain names (URLs) for their websites, apps, or cloud projects.
+
+🔹 Features:
+🔍 1. Domain Search
+
+Input field to search for domain availability (e.g., mycloud.com)
+
+Suggest alternative domains if taken (e.g., mycloud.net, mycloud.io)
+
+Show availability and pricing (based on TLD)
+
+🛒 2. Domain Purchase
+
+If domain is available:
+
+User selects domain and adds to cart
+
+Proceed to payment (wallet, UPI, card)
+
+Domain is registered under their account
+
+⚙️ 3. Domain Management
+
+View list of purchased domains
+
+View domain status (active, expired, expiring soon)
+
+Renew domain
+
+Set DNS records (A, CNAME, MX, TXT)
+
+Link domain to compute instance or storage bucket
+
+🔐 4. WHOIS Privacy Protection
+
+Option to hide domain owner's personal info from public WHOIS
+
+🔹 Domain Types / TLDs Supported
+
+.com, .net, .org, .io, .cloud, .in, etc.
+
+Pricing table for each TLD
+
+🔐 Security & Compliance
+
+MFA required before domain purchase
+
+DNSSEC support (optional)
+
+Domain transfer lock
+
+🧭 UI Suggestions
+
+Sidebar Menu:
+
+Dashboard
+
+Computing
+
+Storage
+
+Domains
+
+Billing
+
+Settings
+
+Domain Section Pages:
+
+Search & Buy
+
+My Domains
+
+DNS Management
+
+Billing & Renewals
+
+📝 Summary Table(for user not ai)
+
+| Feature         | Description                    |
+| --------------- | ------------------------------ |
+| Domain Search   | Check if domain is available   |
+| Domain Purchase | Buy and register domain        |
+| DNS Settings    | Set A, CNAME, MX, TXT records  |
+| Domain Renewal  | Manual or auto-renewal options |
+| WHOIS Privacy   | Hide owner's personal details  |
+
+
+4> Billing System
+🔹 Purpose:
+
+Track user usage (VM, Storage, Domain), calculate cost, and support payments.
+
+🔹 Features:
+
+Usage Tracking
+
+VM hours, GB storage, domain purchases
+
+Price Model
+
+₹0.50/hour (VM), ₹0.10/GB/month (Storage), ₹800+ per domain
+
+Invoice
+
+Monthly bill (auto-generated), PDF download
+
+Payment
+
+UPI / Card via Razorpay or Stripe
+
+Status: Paid / Due / Failed
+
+History
+
+Past invoices & payments view
+
+Alerts
+
+Email/SMS for bill due, payment success, usage warning
+
+🔹 UI Menu:
+
+Dashboard
+
+My Invoices
+
+Usage Summary
+
+Add Payment Method
+
+Billing Settings

@@ -1,0 +1,13 @@
+# Ignore node modules and Python cache
+node_modules/
+__pycache__/
+*.log
+.env
+# Ignore OS files
+.DS_Store
+Thumbs.db
+# Ignore Alembic migration cache
+Back_end/alembic/versions/
+# Ignore IDE/editor files
+.vscode/
+.idea/
